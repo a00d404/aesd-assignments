@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 # Script to open qemu terminal.
 # Author: Siddhant Jajoo.
 
@@ -23,10 +23,9 @@ if [ ! -e ${INITRD_IMAGE} ]; then
     exit 1
 fi
 
-
 echo "Booting the kernel"
 # See trick at https://superuser.com/a/1412150 to route serial port output to file
 qemu-system-aarch64 -m 256M -M virt -cpu cortex-a53 -nographic -smp 1 -kernel ${KERNEL_IMAGE} \
         -chardev stdio,id=char0,mux=on,logfile=${OUTDIR}/serial.log,signal=off \
         -serial chardev:char0 -mon chardev=char0\
-        -append "rdinit=/bin/sh" -initrd ${INITRD_IMAGE}
+        -append "rdinit=/home/autorun-qemu.sh" -initrd ${INITRD_IMAGE}
