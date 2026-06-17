@@ -86,9 +86,8 @@ bool do_exec(int count, ...)
         command[i] = va_arg(args, char *);
     }
     command[count] = NULL;
-<<<<<<< HEAD
 
-    fflush(stdout);
+fflush(stdout);
 
     pid_t pid = fork();
 
@@ -115,7 +114,6 @@ bool do_exec(int count, ...)
             return false;
         }
     }
-=======
     // this line is to avoid a compile warning before your implementation is complete
     // and may be removed
     command[count] = command[count];
